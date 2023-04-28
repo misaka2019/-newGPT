@@ -3,10 +3,8 @@ from model.gpt import GPT
 from config import *
 import os
 from torch.optim import AdamW
-import math
 import torch
 import random
-
 
 os.environ['CUDA_LAUNCH_BLOCKING'] = '1'
 
@@ -26,14 +24,13 @@ def estimate_loss():
     return out
 
 
-
 def get_lr(it):
-    if it<=1000:
+    if it <= 1000:
         return learning_rate
-    if it<=10000:
-        return learning_rate*0.7
-    if it<=50000:
-        return learning_rate*0.1
+    if it <= 10000:
+        return learning_rate * 0.7
+    if it <= 50000:
+        return learning_rate * 0.1
 
 
 def train(model, optimizer, always_save_checkpoint, out_dir, gradient_accumulation_steps=1):
